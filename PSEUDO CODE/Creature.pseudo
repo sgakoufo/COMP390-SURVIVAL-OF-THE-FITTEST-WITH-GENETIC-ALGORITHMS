@@ -6,9 +6,9 @@ class Creature{
     //=====================================================
     // initialise variables
     //=====================================================
+    private int numOfLimbs = 8;// this is hard coded in, it can be changed.
+    private Limb[] limbArray = Limb[numOfLimbs]; // the array from which the creature will choose limbs to generate from
 
-    // IMPLEMENT MUTATIONS!
-    private Joint[] jointArray; // the array from which the creature will choose joints to generate from
 
     double jumpPower;
     if(generationOneCreature()){// the creature is a generatin 1 creautre
@@ -26,14 +26,21 @@ class Creature{
 
     public void Creature(){
         // construcotr for when the craeture does not have any parents(Generation 1 creature)
-        jointArray = new Joint();//Populate the array with all possible joints. The joint class constructor  will create an array with random joints
+        for (int i = 0; i < numOfLimbs; i++){
+            limbArray[] = new Limb();// give no varaibles to the Join Constructor, create a limb randomly
+        }
         jumpPower = Math.rand(0,10);// the creature will get a random jump power between 0 and 10. 10 IS A PLACEHOLDER. this can change
     }
 
     public vod Creature(cr1,cr2){
         // constructor for when the creature has parents, cr1 and cr2
-        jointArray = new Joint(cr1, cr2);// populat jointArray with joints used by the creature's parents
-        jumpPower = Math.rand(Math.Min(cr1.jumpPower, cr2.jumpPower),Math.Max(cr1.jumpPower, cr2.jumpPower))// give the creature jump using the creature's parents jump power
+        for (int i = 0; i < numOfLimbs; i++){
+            limbArray[i] = new Limb(cr1, cr2, i);// populate limb based on creature's parents and the limb Num
+        }
+        
+        jumpPower = Math.rand(Math.Min(cr1.jumpPower, cr2.jumpPower),Math.Max(cr1.jumpPower, cr2.jumpPower))// give the creature jump using the creature's parents jump power.
+        // this is a placeholder and will be implemented diffierently as it is too simple
+
     }
 
 

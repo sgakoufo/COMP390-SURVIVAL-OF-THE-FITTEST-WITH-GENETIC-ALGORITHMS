@@ -1,0 +1,44 @@
+class Limb{
+    //=====================================================
+    // initialise variables
+    //=====================================================
+    int numOfLimbs = 8;// this is hard-coded in, it can be changed
+    int limbType; // either 1 or 2, there is only 2 joint types at the moment, leg and wheel
+
+    
+
+
+
+
+    //=====================================================
+    // Constructors
+    //=====================================================
+    public Limb(){
+        // creatre an array of random limbs
+    }
+    // FOR THE LEG AND CIRCLE CLASSES, IT IS VERY SIMILAR
+    public Limb(creature cr1, creature cr2, int limbNum){
+        // use varaibles j1 and j2 for easier programming
+        Limb l1 = cr1.limb[limbNum];// limb number limbNum of creature 1
+        Limb l2 = cr2.limb[limbNum];// limb number limbNum of creature 2
+
+        if (l1.type == l2.type){
+            // higher probabillity the limbType of this limb will be the same as parents
+            if (Math.rand(0,100) <= 80){
+                limbType = l1.type
+            }
+            else{
+                limbType = //other limb type
+            }
+        }
+        else{
+            // limbType assinged randmly
+            if (Math.rand(0,100) <= 50){
+                limbType = 1;
+            }
+            else{
+                limbType = 2;
+            }
+        }
+
+}

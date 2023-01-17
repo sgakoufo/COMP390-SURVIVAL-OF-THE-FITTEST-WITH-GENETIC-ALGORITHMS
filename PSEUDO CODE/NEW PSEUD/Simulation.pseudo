@@ -1,0 +1,61 @@
+class Simulation{
+    // MUTATIONS TO BE IMPLEMENTED
+    //=====================================================
+    // Initialise Variables
+    //=====================================================
+    private Final int numOfCreatures = 100; // THIS IS A PLACEHOLDER
+    private int generationNum;
+    private creature bestCreature;
+
+
+    private creature[] creatureArray = new Creature[numOfCreatures];// create an array of type creature and length creatureNum
+
+
+    //=====================================================
+    // Constructors
+    //=====================================================
+    public  Main(){
+        generationNum = 1;
+        while (!reachedEnd){
+            runSimulatin(genertaion)
+            bestCreature = findBestCreature (creatureArray);
+        }
+
+        while(!reachedEnd()){
+            generationNum++;
+            for(int i = 0, i < numOfCreatures; i++){
+
+            }
+        }
+        
+       
+        }
+
+
+
+    private void runSimulatin(int generationNum){
+        // this fucntion starts running the simulation for the generaton passed on as paramater
+        // TO BE IMPLEMENTED
+        if (generationNum == 1){//check if this is the first generation
+            for (int i = 0; i < numOfCreatures; i++){
+                creatureArray[i] = creature();// for the first generation, pass no paramaters, and craetre craetures with random varaibales
+                bestCreature = findBestCreature;
+            }
+        } else{// for every other generatoin, creature varables are not generated randomly. IMPLEMENT THE FUCNTION SO THAT
+              // IT GENERATES CREATURE CHARACERISTICS BASED ON HE BEST CREATURE
+              //  NEED TO DEICDE IF CHARACTERISTICS SELECTIONS HAPPENS IN THE SIMULATION CLASS OR THE CREATURE CLASS 
+              // MAYBE IN THE CREATURE CLASS
+            for(int i = 0; i < numOfCreatures; i++){
+                creatureArray[i] = creature(pr1, pr2, pr3...);
+            }
+        }
+    }
+    public creature findBestCreature(Creature creatureArray){
+        // this function finds the best crature out of the creature array that is passed on to it as a paramater
+        // TO BE IMPLEMENTED
+    }
+
+
+
+
+}

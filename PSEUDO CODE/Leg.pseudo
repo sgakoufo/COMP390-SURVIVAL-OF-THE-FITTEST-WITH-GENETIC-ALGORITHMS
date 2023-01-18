@@ -1,0 +1,27 @@
+class Leg extends Limb
+    //=====================================================
+    // initialise variables
+    //=====================================================
+    int numberOfJoints;// number of joints can be 1,2 or 3. //WILL BE IMPLEMENTED LATER
+    // the joint that connects the leg to the body also counts as a join, so we need a minimum of 1 joints
+
+    double part1Lenght;
+    double part2lengh;
+    double part3lengt;
+    //Lenght of each part. As we can have 1-3 joints, we have 1-3 parts
+
+    double legLength;// this is the total length of the leg, so the sum of all partlengths
+
+    //=====================================================
+    // Constructors
+    //=====================================================
+    public static Leg(){//no parents, leg is generated randomly
+        numberOfJoints == Math.rand(1,2,3); //choose a random number of joints. at first we will only have 1 jon( the join that cnnects leg with the body)
+        numberOfJoints == 1
+    }
+    public Static Leg(Limb l1, Lim2 l2){
+
+    }
+
+
+}

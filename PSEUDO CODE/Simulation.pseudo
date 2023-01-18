@@ -1,4 +1,4 @@
-class Simulation{
+class Simulation
     // MUTATIONS TO BE IMPLEMENTED
     //=====================================================
     // Initialise Variables

@@ -1,9 +1,11 @@
-class Limb{
+class Limb
     //=====================================================
     // initialise variables
     //=====================================================
     int numOfLimbs = 8;// this is hard-coded in, it can be changed
-    int limbType; // either 1 or 2, there is only 2 joint types at the moment, leg and wheel
+    private int limbType; // either 1 or 2, there is only 2 joint types at the moment, leg and wheel
+                  // 1 is a leg, 2 is a wheel
+    private Limb creatureLimb;
 
     
 
@@ -14,7 +16,15 @@ class Limb{
     // Constructors
     //=====================================================
     public Limb(){
-        // creatre an array of random limbs
+        // choose limbType randomly
+        limbType = generateRandomLimbType();
+
+        if (limbType == 1){// generate a Leg
+            creatureLimb = Leg();// pass no paramters because there is no partens. Generation 1 or Mutation
+        }else if (limbType == 2){// generate a wheel33
+            creatureLimb = Wheel();// pass no paramters because there is no parents. Generatin 1 or mutatoin
+        }
+
     }
     // FOR THE LEG AND CIRCLE CLASSES, IT IS VERY SIMILAR
     public Limb(creature cr1, creature cr2, int limbNum){
@@ -22,6 +32,7 @@ class Limb{
         Limb l1 = cr1.limb[limbNum];// limb number limbNum of creature 1
         Limb l2 = cr2.limb[limbNum];// limb number limbNum of creature 2
 
+        // choose limb type
         if (l1.type == l2.type){
             // higher probabillity the limbType of this limb will be the same as parents
             if (Math.rand(0,100) <= 80){
@@ -29,16 +40,34 @@ class Limb{
             }
             else{
                 limbType = //other limb type
-            }
-        }
-        else{
+            } 
+        }else{
+            limbType = generateRandomLimbType();
             // limbType assinged randmly
-            if (Math.rand(0,100) <= 50){
-                limbType = 1;
-            }
-            else{
-                limbType = 2;
-            }
+        }
+        creatureLimb = generateLimb(limbType);
+    }
+    //=====================================================
+    // Supporting Functions
+    //=====================================================
+
+    private static Limb generateLimb(limbType){
+        if (limbType == 1){
+            creatureLimb = Leg(l1,l2)
+        }
+        else if (limbType == 2){
+            creatureLimb = Wheel(l1,l2)
         }
 
+    }
+    private static int generateRandomLimbType(){
+        // this funcitn generates a random limbtype for the limb
+        //cuurently there is only two limb types, but it can be implemented for more
+        if (Math.rand(0,100) <= 50){
+            return 1;//returns 1 for Leg limb type
+        }
+        else{
+            return 2;//retursn 2 for Wheel limb type
+        }
+    }
 }

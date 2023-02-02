@@ -2,26 +2,79 @@ class Leg extends Limb
     //=====================================================
     // initialise variables
     //=====================================================
-    int numberOfJoints;// number of joints can be 1,2 or 3. //WILL BE IMPLEMENTED LATER
+    private int numberOfJoints;// number of joints can be 1 or 2 //MORE JONTS CAN BE IMPLEMENTED LATER
     // the joint that connects the leg to the body also counts as a join, so we need a minimum of 1 joints
 
-    double part1Lenght;
-    double part2lengh;
-    double part3lengt;
-    //Lenght of each part. As we can have 1-3 joints, we have 1-3 parts
+    private double part1Lenght;
+    private double part2lengh;
+    //Length of each part. As we can have 1-2 joints, we have 1-2 parts
+    private double jont1Rotation;
+    private double jont2Rotation;
+    //rotatn of each part, meassured in radians. if it s for example pi/2 redians, it can be rotate up to pi/2 in both drections
 
-    double legLength;// this is the total length of the leg, so the sum of all partlengths
+    private double legLength;// this is the total length of the leg, so the sum of all partlengths
 
     //=====================================================
     // Constructors
     //=====================================================
     public static Leg(){//no parents, leg is generated randomly
+        legLenth = Math.rand(0,10);// random leg length. 0 and 10 are TEMP will be IMPLEMENTED
         numberOfJoints == Math.rand(1,2,3); //choose a random number of joints. at first we will only have 1 jon( the join that cnnects leg with the body)
-        numberOfJoints == 1
+        // ether 1 or 2. Syntax here is wrong but will be fixed TO BE IMPLEMENTED
+        if(numberOfJoints <=2 1){
+            part1Lengh = legLength;
+            joint1Rotation = Math.rand(0,2)*Math.pi;
+        }
+        if(numberOfJoints <= 2){
+            part2Length = legLength - part1Lengh;//part two gets the rest of the allowed length
+            joint2Rotation = Math.rand(0,2)*Math.pi;
+        }
     }
     public Static Leg(Limb l1, Lim2 l2){
+        if(Math.Rand(0,100) <= 80){//80% chance the leg will be the same as the parents' MUTATION?
+            legLength = Math.rand(l1.legLength, l2.legLength);//choose leg lenght depedning on parents
 
+            if(l1.numberOfJoints = l2.numberOfJoints){
+                numberOfJoints = l1.numberOfJoints;
+            }
+            else{
+                numbeOfJoints =  (Math.rand(1,2))// ether 1 or 2. Syntax here is wrong but will be fixed TO BE IMPLEMENTED
+            }
+
+            if (numberOfJoints <= 1){
+                part1Length = legLength;
+                joint1Rotation = choseRotation(l1,l2,1);
+            }
+            if (numberOfJoints <= 2){
+                part2Length = legLength - part1Lengh;
+                joint2Rotation = chooseRotation(l1,l2,2);
+            }
+        }else{
+            Leg();
+        }
     }
 
+    //=====================================================
+    // Support Functions
+    //=====================================================
 
+    public doule chooseRotation(limb l1, limb l2, int jointNum){
+        //this function chooses a joint rotatin based on the parents' joint rotation
+        // this function is needed as it is long code to write many times(need to know which join
+        // has smaller rotation value)
+        //currently works for only 2 joints. TO BE IMPLEMENTED
+        if (jointNum == 1){
+           if (l1.joint1Rotation <= l2.joint1Rotation){
+                Math.rand(l1.joint1Rotation, l2.joint1Rotation);
+           }else{
+                Math.rand(l2.joint1Rotation, l1.joint1Rotation);
+           }
+        }else if (jointNum == 2){
+            if (l1.joint2Rotation <= l2.joint2Rotation){
+                Math.rand(l1.joint2Rotation, l2.joint2Rotation);
+           }else{
+                Math.rand(l2.joint2Rotation, l1.joint2Rotation);
+           }
+        }
+    }
 }

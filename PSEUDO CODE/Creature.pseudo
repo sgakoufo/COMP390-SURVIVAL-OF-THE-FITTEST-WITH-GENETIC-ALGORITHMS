@@ -1,23 +1,15 @@
-class Creature
+class Creature// Missing "{" to allow comments to show
     
     
     //   MUTATIONS TO BE IMPLEMENTED
-    // this is pseudocode for the class that will be used for the craeture/
+    // this is pseudocode for the class that will be used for the craeture
     //=====================================================
     // initialise variables
     //=====================================================
     private int numOfLimbs = 8;// this is hard coded in, it can be changed.
     private Limb[] limbArray = Limb[numOfLimbs]; // the array from which the creature will choose limbs to generate from
-
-
-    double jumpPower;
-    if(generationOneCreature()){// the creature is a generatin 1 creautre
-        jumpPower = Math.rand(0,10);// the creature will get a random jump power between 0 and 10. Of course this can change
-    }else{// the creature is not a generation 1 creature
-        jumpPwer = Math.rand(creature1.jumpPower, creature2.Jumppower)// the creature gets jump power using its parent's jump power
-    }
-    
-    double distance = 0.0;// initialise distance variable. This will increment when the creature travels
+    private double jumpPower; 
+    private double distance = 0.0;// initialise distance variable. This will increment when the creature travels
 
 
     //=====================================================
@@ -29,6 +21,7 @@ class Creature
         for (int i = 0; i < numOfLimbs; i++){
             limbArray[] = new Limb();// give no varaibles to the Join Constructor, create a limb randomly
         }
+        
         jumpPower = Math.rand(0,10);// the creature will get a random jump power between 0 and 10. 10 IS A PLACEHOLDER. this can change
     }
 

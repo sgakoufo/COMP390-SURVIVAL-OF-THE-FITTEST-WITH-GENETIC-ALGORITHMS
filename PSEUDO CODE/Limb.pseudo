@@ -7,11 +7,6 @@ class Limb
                   // 1 is a leg, 2 is a wheel
     private Limb creatureLimb;
 
-    
-
-
-
-
     //=====================================================
     // Constructors
     //=====================================================
@@ -33,22 +28,21 @@ class Limb
         Limb l2 = cr2.limb[limbNum];// limb number limbNum of creature 2
 
         // choose limb type
-        if (l1.type == l2.type){
-            // higher probabillity the limbType of this limb will be the same as parents
+        if (l1.type == l2.type){// if parents have the same limb type, high chance child will have too IS THIS A MUTATION IMPLEMENTATION?
             if (Math.rand(0,100) <= 80){
                 limbType = l1.type
             }
             else{
                 limbType = //other limb type
             } 
-        }else{
+        }else{ // if parents do not have the same limb type, generate the limb randomly
             limbType = generateRandomLimbType();
             // limbType assinged randmly
         }
         creatureLimb = generateLimb(limbType);
     }
     //=====================================================
-    // Supporting Functions
+    // Support Functions
     //=====================================================
 
     private static Limb generateLimb(limbType){

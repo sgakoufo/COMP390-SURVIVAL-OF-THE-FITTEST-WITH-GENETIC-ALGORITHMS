@@ -3,63 +3,62 @@ class Simulation// Missing "{" to allow comments to show
     //=====================================================
     // Initialise Variables
     //=====================================================
-    private Final int numOfCreatures = 100; // THIS IS A PLACEHOLDER
     private int generationNum;
-    private creature bestCreature;
-
-
+    private Final int numOfCreatures = 100; // THIS IS A PLACEHOLDER
+    
     private creature[] creatureArray = new Creature[numOfCreatures];// create an array of type creature and length creatureNum
+    private Creature bestCreature;
+    private Creature secnondBestCreature;
 
 
     //=====================================================
     // Constructors
     //=====================================================
 
-    /=====================================================
+    //=====================================================
     // MAIN METHOD
     //=====================================================
     public  Main(){
         generationNum = 1;
-        while (!reachedEnd){
-            runSimulation(genertaionNum)
-            bestCreature = findBestCreature (creatureArray);
+        runSimulation();
         }
 
-        while(!reachedEnd()){
-            generationNum++;
-            for(int i = 0, i < numOfCreatures; i++){
 
+    private void runSimulation(){
+        // this fucntion starts running the simulation
+        // TO BE IMPLEMENTED
+        if (generationNum == 1){// for the first generation, pass no paramaters, and craetre craetures with random varaibales
+            for (int i = 0; i < numOfCreatures; i++){
+                creatureArray[i] = creature();
+                runGeneration();
+                bestCreature = findBestCreature();
+                secondBestCreature = findSecBestCreature();
             }
         }
-        
-       
+        // now start running for every other generation until a creature reaches the end
+        while(!reachedEnd){
+            generationNum++;
+            for(int i = 0; i < numOfCreatures; i++){
+                creatureArray[i] = Creature(bestCreature, secBestCreature);// call the cnstructor function with the best creature so that the creature generates creatures accoridngly
+                runGeneration();
+                bestCreature = findBestCreature();
+                secBestCreate = findSecBestCreature();
+            }
+            for// ALSO ADD IN MUTAIOTNS. MAKE THE ABOVE FOR LOOP HAPPEB FOR ONLY THE  80% OF CREATURES AND THIS FOR THE REST 20%
         }
 
+        endSimulation();
+        // note we can also adjust this and end the simualtiona after a certain time has been achieved, certain number of generations, certain number of creatures reached etc/
+    }
+    public void runGeneration(){
+        // TO BE IMPMENTED
+        // This funcion runs the acual generaitn, calcualtes data, calcualtes the apropriate time to end the generation etc. Maybe a good idea to add this as a different class?
+        
+    }
 
     //=====================================================
     // Support functions
     //=====================================================
-    private void runSimulation(int generationNum){
-        // this fucntion starts running the simulation for the generaton passed on as paramater
-        // TO BE IMPLEMENTED
-        if (generationNum == 1){//check if this is the first generation
-            for (int i = 0; i < numOfCreatures; i++){
-                creatureArray[i] = creature();// for the first generation, pass no paramaters, and craetre craetures with random varaibales
-                bestCreature = findBestCreature();
-                secondBestCreature = findSecBestCreature()l
-            }
-        } else{// for every other generatoin, creature variables are not generated randomly. IMPLEMENT THE FUCNTION SO THAT
-              // IT GENERATES CREATURE CHARACERISTICS BASED ON HE BEST CREATURE
-              //  NEED TO DEICDE IF CHARACTERISTICS SELECTIONS HAPPENS IN THE SIMULATION CLASS OR THE CREATURE CLASS 
-              // MAYBE IN THE CREATURE CLASS
-            
-            for(int i = 0; i < numOfCreatures; i++){
-                creatureArray[i] = Creature(bestCreature, secBestCreature);// call the cnstructor function with the best creature so that the creature generates creatures accoridngly
-                bestCreature = findBestCreature();
-            }
-            for// ALSO ADD IN MUTAIOTNS. MAKE THE ABOVE FOR LOOP HAPPEB FOR ONLY THE  80% OF CREATURES AND THIS FOR THE REST 20%
-        }
-    }
     public creature findBestCreature(Creature creatureArray){
         // this function finds the best crature out of the creature array that is passed on to it as a paramater
         // TO BE IMPLEMENTED
@@ -72,6 +71,9 @@ class Simulation// Missing "{" to allow comments to show
     public boolean reachedEnd(){
         // this function returns true or false based on if a creature has reached the end
         // TO BE IMPLEMNETED
+    }
+    public void endSimulation(){
+        //TO BE IMPLEMENTED. IMPLEMENT SO FUNCTION STOPS EVERYTHING, CALCULATES DATA. 
     }
 
 

@@ -1,4 +1,8 @@
-class Limb
+class Limb// Missing "{" so tha colour format is correct.(bug?)
+/*
+    Limb generation: Can have a test where the creature is allowed to go haywire and generate like 10 joints,
+     or something. If do this, lmi the leg length tho.
+*/
     //=====================================================
     // initialise variables
     //=====================================================
@@ -28,16 +32,10 @@ class Limb
         Limb l2 = cr2.limb[limbNum];// limb number limbNum of creature 2
 
         // choose limb type
-        if (l1.type == l2.type){// if parents have the same limb type, high chance child will have too IS THIS A MUTATION IMPLEMENTATION?
-            if (Math.rand(0,100) <= 80){
-                limbType = l1.type
-            }
-            else{
-                limbType = //other limb type
-            } 
+        if (l1.type == l2.type){// if parents have the same limb type, child has the same limb type.
+            limbType = l1.type
         }else{ // if parents do not have the same limb type, generate the limb randomly
             limbType = generateRandomLimbType();
-            // limbType assinged randmly
         }
         creatureLimb = generateLimb(limbType);
     }

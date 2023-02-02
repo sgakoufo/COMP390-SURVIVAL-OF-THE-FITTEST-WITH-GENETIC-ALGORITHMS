@@ -1,0 +1,24 @@
+class Wheel extends Limb// Missing "{" so tha colour format is correct.(bug?)
+    //=====================================================
+    // initialise variables
+    //=====================================================
+
+    private double radius;
+    private double angVel;
+
+    //=====================================================
+    // Constructors
+    //=====================================================
+
+    public void Wheel(){
+        radius = Math.rand(0,5);// this is TEMP, will change
+        angVel = Math.rand(0,10);// this is TEMP, wll change
+    }
+
+    public void Wheel(Limb l1, Limb l2){
+            radius = Math.rand(Math.min(l1.radius, l2.radius), Math.max(l1.radius, l2.radius));
+            angVel = Math.rand(Math.min(l1.angVel, l2.angVel), Math.max(l1.angVel, l2.angVel));
+    }
+
+
+}

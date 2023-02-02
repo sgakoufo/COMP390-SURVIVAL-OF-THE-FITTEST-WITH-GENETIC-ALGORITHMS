@@ -1,8 +1,12 @@
-class Creature// Missing "{" to allow comments to show
-    
-    
-    //   MUTATIONS TO BE IMPLEMENTED
-    // this is pseudocode for the class that will be used for the craeture
+class Creature// Missing "{" so tha colour format is correct.(bug?)
+    /* Muations:
+    •	Mutations are currently implemented so that the creature class has a 20% of developing a mutation.
+         We can add even more mutations in the other classes, but this is probably unnecessary. Also, the 
+         20% value can change.
+    */
+
+
+
     //=====================================================
     // initialise variables
     //=====================================================
@@ -17,7 +21,7 @@ class Creature// Missing "{" to allow comments to show
     //=====================================================
 
     public void Creature(){
-        // construcotr for when the craeture does not have any parents(Generation 1 creature)
+        // construcotr for when the craeture does not have any parents(Generation 1 creature, or Mutation)
         for (int i = 0; i < numOfLimbs; i++){
             limbArray[] = new Limb();// give no varaibles to the Join Constructor, create a limb randomly
         }
@@ -27,8 +31,13 @@ class Creature// Missing "{" to allow comments to show
 
     public vod Creature(cr1,cr2){
         // constructor for when the creature has parents, cr1 and cr2
-        for (int i = 0; i < numOfLimbs; i++){
-            limbArray[i] = new Limb(cr1, cr2, i);// populate limb based on creature's parents and the limb Num
+        // mutation:
+        if (Math.rand(0,100) <= 20){//mutation
+            Creature()
+        }else{//not a mutation
+            for (int i = 0; i < numOfLimbs; i++){
+                limbArray[i] = new Limb(cr1, cr2, i);// populate limb based on creature's parents and the limb Num
+            }
         }
         
         jumpPower = Math.rand(Math.Min(cr1.jumpPower, cr2.jumpPower),Math.Max(cr1.jumpPower, cr2.jumpPower))// give the creature jump using the creature's parents jump power.

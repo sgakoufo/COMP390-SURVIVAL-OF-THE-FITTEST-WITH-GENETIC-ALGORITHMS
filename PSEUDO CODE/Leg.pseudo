@@ -8,11 +8,13 @@ class Leg extends Limb
     private double part1Lenght;
     private double part2lengh;
     //Length of each part. As we can have 1-2 joints, we have 1-2 parts
+    private double legLength;// this is the total length of the leg, so the sum of all partlengths
+
+    
     private double jont1Rotation;
     private double jont2Rotation;
     //rotatn of each part, meassured in radians. if it s for example pi/2 redians, it can be rotate up to pi/2 in both drections
 
-    private double legLength;// this is the total length of the leg, so the sum of all partlengths
 
     //=====================================================
     // Constructors
@@ -41,14 +43,14 @@ class Leg extends Limb
                 numbeOfJoints =  (Math.rand(1,2))// ether 1 or 2. Syntax here is wrong but will be fixed TO BE IMPLEMENTED
             }
 
-            if (numberOfJoints <= 1){
+            if (numberOfJoints <= 1){//
                 part1Length = legLength;
-                joint1Rotation = choseRotation(l1,l2,1);
+                joint2Rotation = Math.rand(Math.min(l1.joint1Rotation, l2.joint1Rotation), Math.max(l1.joint1Rotation, l2.jont1Rotation));
             }
             if (numberOfJoints <= 2){
                 part2Length = legLength - part1Lengh;
-                joint2Rotation = chooseRotation(l1,l2,2);
-            }
+                joint2Rotation = Math.rand(Math.min(l1.joint2Rotation, l2.joint2Rotation), Math.max(l1.joint2Rotation, l2.jont2Rotation));
+            }// it is easy to add more joints. simply do if (numberOfJoints <= 3,4 5 etc. Howerver i doubt we will ever have more than 3
         }else{
             Leg();
         }
@@ -58,23 +60,6 @@ class Leg extends Limb
     // Support Functions
     //=====================================================
 
-    public doule chooseRotation(limb l1, limb l2, int jointNum){
-        //this function chooses a joint rotatin based on the parents' joint rotation
-        // this function is needed as it is long code to write many times(need to know which join
-        // has smaller rotation value)
-        //currently works for only 2 joints. TO BE IMPLEMENTED
-        if (jointNum == 1){
-           if (l1.joint1Rotation <= l2.joint1Rotation){
-                Math.rand(l1.joint1Rotation, l2.joint1Rotation);
-           }else{
-                Math.rand(l2.joint1Rotation, l1.joint1Rotation);
-           }
-        }else if (jointNum == 2){
-            if (l1.joint2Rotation <= l2.joint2Rotation){
-                Math.rand(l1.joint2Rotation, l2.joint2Rotation);
-           }else{
-                Math.rand(l2.joint2Rotation, l1.joint2Rotation);
-           }
-        }
-    }
+    
+    
 }

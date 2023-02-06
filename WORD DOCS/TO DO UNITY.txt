@@ -1,0 +1,8 @@
+To do:
+- Make very simple environment DONE
+- Find out how to simply generate a single creature. Maybe using scripts too
+- Find out how to generate multiple creatures that dont interact...
+- Make creatures actually move( legs move, wheels move)
+- Find out how to pass on data from generation go generation(scene to scene?)
+	-probaly like you would do on eg a mario game
+- How do we follow the best creture?

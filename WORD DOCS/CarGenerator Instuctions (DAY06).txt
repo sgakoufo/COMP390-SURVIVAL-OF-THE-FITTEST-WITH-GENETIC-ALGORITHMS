@@ -1,0 +1,34 @@
+High frequencey so wheels dont bounce
+Vector2 movement = new Vector(1,0); so that the car constantly moves forward.
+We can have this fixed or not, depending on our environment!
+
+How to create a car:
+-Create an empty object called creature
+-CarBody
+	-2D Object Sprite Square(Gives Sprite Renderer)
+	-Box Collider(Dont change)
+	-RigidBody2d(Dont change)
+	-The Script for moving
+		-Either set the Vector2D object to listen
+		to user input, or pre-set it to 1 for x axis.
+		
+-Wheel:
+	-Transform: Put the wheel where you want it.
+	-2d Object Sprite Circle(Gives Sprite Renderer
+	-Circle Collider 2d(Dont change)
+	-RigidBody2d(Dont change)
+	-WheelJoin2D
+		-Connect the Rigid Body to CarBody
+		-Set Suspension to 20 for no hippy hop
+		-Anchor 0 0
+		-Connected Anchor: Connect where you want it.
+
+GENETIC ALGORITHMS:
+	-Speed
+	-Wheel Size aka:(Transform scale, x and y)
+	-Wheel position( Transform + anchor. Need to set limits.
+			They are not exactly the same values, and
+			if the anchor is set to be outside the body 
+			the simulation goes apeshit)
+
+	

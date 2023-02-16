@@ -1,0 +1,4 @@
+NOTE: TO GENERATE, TEH SPRITE NEEDS TO BE IN THE RESOURCES FOLDER
+
+gameObject.transform.localScale = new Vector3(3f, 1f, 1f); To change the
+size of a game object. SO you have to change the actual game object

@@ -21,8 +21,15 @@ How to create a car:
 	-WheelJoin2D
 		-Connect the Rigid Body to CarBody
 		-Set Suspension to 20 for no hippy hop
+
 		-Anchor 0 0
 		-Connected Anchor: Connect where you want it.
+		
+			- to change suspension on script:
+			JointSuspension2D suspension = frontWheelJoint.suspension;
+        		suspension.frequency = 20.0f;
+        		frontWheelJoint.suspension = suspension;
+
 
 GENETIC ALGORITHMS:
 	-Speed

@@ -7,7 +7,9 @@ public class CleanCreatureGenerator06 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateCreature();
+        for(int i =0; i<2; i++){
+            GenerateCreature();
+        }
     }
 
 
@@ -19,10 +21,18 @@ public class CleanCreatureGenerator06 : MonoBehaviour
         // Set creatureObject as the parent:
         creatureObject.transform.SetParent(transform, false);
 
+        int creatureLayerIndex = LayerMask.NameToLayer("Creature");
+         // Get creatureLayer Index. The layer will be assigned to each of the creature's body and limbs
+         // so that the creatures dont interact with each other.
+
+
         // ========================================================================================================
         // creatureBody:
         // ========================================================================================================
         GameObject creatureBody = new GameObject("creatureBody");
+        creatureBody.transform.SetParent(creatureObject.transform, false);// Set carObject as the parent of carBody
+        creatureBody.layer = creatureLayerIndex; // Set creature layer so creatures dont ineteract
+
         // Scale and position of the body:
         creatureBody.transform.localScale    = new Vector3(3f,1f,1f);
         creatureBody.transform.localPosition = new Vector3(0f,0f,0f);
@@ -54,7 +64,8 @@ public class CleanCreatureGenerator06 : MonoBehaviour
         GameObject wheel = new GameObject("wheel");
         // Set creatureObject as teh wheel's parent:
         wheel.transform.SetParent(creatureObject.transform, false);
-
+        int creatureLayerIndex = LayerMask.NameToLayer("Creature");
+        wheel.layer = creatureLayerIndex; // set wheel layer to creature so creatures they dont interact
          
         // ========================================================================================================
         // Give wheel its components
@@ -96,6 +107,7 @@ public class CleanCreatureGenerator06 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         
     }
 }

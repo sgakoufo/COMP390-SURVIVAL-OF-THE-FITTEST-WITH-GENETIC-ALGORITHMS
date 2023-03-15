@@ -12,6 +12,7 @@ How to create a car:
 	-The Script for moving
 		-Either set the Vector2D object to listen
 		to user input, or pre-set it to 1 for x axis.
+		-THE SCRIPT HAS TO BE IN THE ASSETS FOLDER
 		
 -Wheel:
 	-Transform: Put the wheel where you want it.

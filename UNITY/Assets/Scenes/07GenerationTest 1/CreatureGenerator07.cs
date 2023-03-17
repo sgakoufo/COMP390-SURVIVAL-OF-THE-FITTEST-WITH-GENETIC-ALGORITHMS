@@ -7,7 +7,7 @@ public class CreatureGenerator07 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for(int i =0; i<50; i++){
+        for(int i =0; i<10; i++){
             GenerateCreature();
         }
     }
@@ -57,8 +57,8 @@ public class CreatureGenerator07 : MonoBehaviour
         // Generate the wheels
         // ========================================================================================================
 
-        generateWheel( 1.5f, 0.5f, -0.5f, creatureObject, creatureBodyRB);// Generate front wheel
-        generateWheel(-1.5f,-0.5f, -0.5f, creatureObject, creatureBodyRB);// Generate back  wheel
+        generateWheel( 1.5f, 0.5f, -0.5f, creatureObject, creatureBodyRB,gray);// Generate front wheel
+        generateWheel(-1.5f,-0.5f, -0.5f, creatureObject, creatureBodyRB,gray);// Generate back  wheel
 
         // ========================================================================================================
         // Movement
@@ -72,7 +72,7 @@ public class CreatureGenerator07 : MonoBehaviour
 
     }
 
-    void generateWheel(float x1, float x2, float y, GameObject creatureObject, Rigidbody2D creatureBodyRB){
+    void generateWheel(float x1, float x2, float y, GameObject creatureObject, Rigidbody2D creatureBodyRB,float gray){
         // x1 is the x axis for the wheel transform, x2 is fote the wheelJoint2D connected anchor value. Y statys the same
         // we have x1 and x2 so the creature generates cleanly
         // ========================================================================================================
@@ -90,7 +90,8 @@ public class CreatureGenerator07 : MonoBehaviour
         // SpriteRender loads the wheel's sprite.(The circle basically)
         SpriteRenderer wheelRenderer = wheel.AddComponent<SpriteRenderer>();
         Sprite       wheelSprite    = Resources.Load<Sprite>("wheelSprite");// finds the sprite in the
-                                                                            // Assets/Resources folder
+        
+        wheelRenderer.color = new Color(gray, gray, gray, 1.0f); // set the color                                                                    // Assets/Resources folder
         wheelRenderer.sprite = wheelSprite;// Assign the sprite
         // wheel position:
         wheel.transform.localPosition = new Vector3(x1,y,0f);

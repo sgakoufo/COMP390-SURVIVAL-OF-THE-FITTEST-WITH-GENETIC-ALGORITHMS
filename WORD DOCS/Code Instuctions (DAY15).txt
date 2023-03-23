@@ -1,3 +1,4 @@
+FOR CARGENERATOR:
 High frequencey so wheels dont bounce
 Vector2 movement = new Vector(1,0); so that the car constantly moves forward.
 We can have this fixed or not, depending on our environment!
@@ -40,4 +41,8 @@ GENETIC ALGORITHMS:
 			if the anchor is set to be outside the body 
 			the simulation goes apeshit)
 
+
+FOR SIMULATION:
+For the camera, make sure to assign the MainCamera gameobject to the public variable
+in the script. (Check day15 Dev Updated doc)
 	

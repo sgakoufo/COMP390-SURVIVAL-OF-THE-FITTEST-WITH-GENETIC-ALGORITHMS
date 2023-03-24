@@ -7,6 +7,8 @@ public class Creature : MonoBehaviour
     // ========================================================================================================
     // private variables
     // ========================================================================================================
+    private int creatureNum; // This is the creature number
+    
     private int numOfWheels = 2;//Temp, might change
     private Wheel[] wheelArray = new Wheel[2]; // 2 IS TEMP
     private float speed = 0;
@@ -32,8 +34,13 @@ public class Creature : MonoBehaviour
     // Constructors
     // ========================================================================================================
     
-    public void CreatureNoParent(){
+   
+    public void CreatureNoParent(int creatureNum_)
+    {  
         // construcotr for when the craeture does not have any parents(Generation 1 creature, or Mutation)
+        creatureNum = creatureNum_;// assign creature number passed by the Simulation class
+
+
         generateCreature();
         //TEMP, THIS IS HARD CODED IN FOR ONLY TWO WHEELS. SHOULD PROBABLY BE HARD CODED IN FOR HOWEVER MANY WHEELS WE CHOSE
         // Front wheel:
@@ -43,15 +50,21 @@ public class Creature : MonoBehaviour
         wheelArray[1] = new Wheel();
         wheelArray[1].WheelNoParent(-x1, -x2, y, creatureObject, creatureBodyRB, color);  
     }
-    /*
-    public void CreatureWithParent(Creature cr1, Creature cr2){
+    
+    public void CreatureWithParent(int creatureNum_, Creature cr1, Creature cr2){
         // constructor for when the creature has parents, cr1 and cr2
-        generateCreature();
-        for(int i = 0; i < numOfWheels; i++){
-            wheelArray[i] = wheelArray[i].WheelWithParent(x1, x2, y, creatureObject, creatureBodyRB, cr1.wheelArray[i], cr2.wheelArray[i]);
-        }
+        creatureNum = creatureNum_;// assign creature number passed by the Simulation class
         
-    }*/
+    
+        generateCreature();
+        //TEMP, THIS IS HARD CODED IN FOR ONLY TWO WHEELS. SHOULD PROBABLY BE HARD CODED IN FOR HOWEVER MANY WHEELS WE CHOSE
+        // Front wheel:
+        wheelArray[0] = new Wheel();
+        wheelArray[0].WheelWithParent(x1, x2, y, creatureObject, creatureBodyRB, color, cr1.wheelArray[0], cr2.wheelArray[0]);
+        // Back wheel:
+        wheelArray[1] = new Wheel();
+        wheelArray[1].WheelWithParent(-x1, -x2, y, creatureObject, creatureBodyRB, color, cr1.wheelArray[1], cr2.wheelArray[1]);
+    }
     // TEMP commented out to keep things simple
 
 
@@ -103,16 +116,24 @@ public class Creature : MonoBehaviour
         CarMovement07 carMovementScript = creatureBody.AddComponent<CarMovement07>();// Add the movement scipr to the CREATURE BODY
                                                                                                 // Create a reference to the script so we can
                                                                                                 // chage the speed
-        float randomSpeed = Random.Range(0f,5f); //generate speed value randoml. This will later change with genetic algorithms. Also thisr ange is temp, it can change
-        carMovementScript.setSpeed(randomSpeed); 
+        speed = Random.Range(0f,5f); //generate speed value randoml. This will later change with genetic algorithms. Also thisr ange is temp, it can change
+        carMovementScript.setSpeed(speed); 
+        
         
     }
     
-    
+    public float getCreatureDistance(){
+        // this function caclulates the creature's current travelled distance
+        distanceTravelled = creatureBody.transform.localPosition.x;
+        return distanceTravelled;
+    }
 
     // ========================================================================================================
     // Getters and setters
     // ========================================================================================================
+    public int getCreatureNum(){
+        return creatureNum;
+    }
 
     public GameObject getCreatureObject(){
         return creatureObject;
@@ -125,4 +146,9 @@ public class Creature : MonoBehaviour
     public float getCreatureBodyLocalX(){
         return creatureBody.transform.localPosition.x;
     }
+
+    public float getSpeed(){
+        return speed;
+    }
+
 }

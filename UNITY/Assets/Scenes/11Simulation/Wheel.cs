@@ -18,13 +18,13 @@ public class Wheel : MonoBehaviour
         radius = Random.Range(0f,3f);// TEMP, this range can change
         generateWheel(x1 ,x2 ,y ,creatureObject, creatureBodyRB,color);
     }
-    /*
-    public void WheelWithParent(float x1, float x2, float y, GameObject creatureObject, Rigidbody2D creatureBodyRB, Wheel w1, Wheel w2){
+    
+    public void WheelWithParent(float x1, float x2, float y, GameObject creatureObject, Rigidbody2D creatureBodyRB,float color, Wheel w1, Wheel w2){
         // this constructor is for when there are parents. It generates the wheel values accordingly
         radius = Random.Range(Mathf.Min(w1.getRadius(), w2.getRadius()), Mathf.Max(w1.getRadius(), w2.getRadius()));
-        generateWheel(x1 ,x2 ,y ,creatureObject, creatureBodyRB);
+        generateWheel(x1 ,x2 ,y ,creatureObject, creatureBodyRB, color);
     }
-    */ 
+
     // TEMP COMMENTED OUT TO KEEP THINGS SIMPLE
 
     void generateWheel(float x1, float x2, float y, GameObject creatureObject, Rigidbody2D creatureBodyRB, float color){

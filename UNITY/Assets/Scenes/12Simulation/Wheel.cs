@@ -13,13 +13,13 @@ public class Wheel : MonoBehaviour
     // ========================================================================================================
     // Constructors
     // ========================================================================================================
-    public void WheelNoParent(float x1, float x2, float y, GameObject creatureObject, Rigidbody2D creatureBodyRB, float color){
+    public void WheelNoParent(float x1, float x2, float y, GameObject creatureObject, Rigidbody2D creatureBodyRB, Color color){
         // this constructor is called when there are no parents
         radius = Random.Range(0f,3f);// TEMP, this range can change
         generateWheel(x1 ,x2 ,y ,creatureObject, creatureBodyRB,color);
     }
     
-    public void WheelWithParent(float x1, float x2, float y, GameObject creatureObject, Rigidbody2D creatureBodyRB,float color, Wheel w1, Wheel w2){
+    public void WheelWithParent(float x1, float x2, float y, GameObject creatureObject, Rigidbody2D creatureBodyRB, Color color, Wheel w1, Wheel w2){
         // this constructor is for when there are parents. It generates the wheel values accordingly
         radius = Random.Range(Mathf.Min(w1.getRadius(), w2.getRadius()), Mathf.Max(w1.getRadius(), w2.getRadius()));
         generateWheel(x1 ,x2 ,y ,creatureObject, creatureBodyRB, color);
@@ -27,7 +27,7 @@ public class Wheel : MonoBehaviour
 
     // TEMP COMMENTED OUT TO KEEP THINGS SIMPLE
 
-    void generateWheel(float x1, float x2, float y, GameObject creatureObject, Rigidbody2D creatureBodyRB, float color){
+    void generateWheel(float x1, float x2, float y, GameObject creatureObject, Rigidbody2D creatureBodyRB, Color color){
         // x1 is the x axis for the wheel transform, x2 is fote the wheelJoint2D connected anchor value. Y statys the same
         // we have x1 and x2 so the creature generates cleanly
         // ========================================================================================================
@@ -39,6 +39,7 @@ public class Wheel : MonoBehaviour
         int creatureLayerIndex = LayerMask.NameToLayer("Creature");
         wheel.layer = creatureLayerIndex; // set wheel layer to creature so creatures they dont interact
          
+         
         // ========================================================================================================
         // Give wheel its components
         // ========================================================================================================
@@ -47,7 +48,7 @@ public class Wheel : MonoBehaviour
         Sprite       wheelSprite    = Resources.Load<Sprite>("wheelSprite");// finds the sprite in the
                                                                             // Assets/Resources folder
         wheelRenderer.sprite = wheelSprite;// Assign the sprite
-        wheelRenderer.color = new Color(color, color, color, 1.0f); // set the color
+        wheelRenderer.material.color = color;
         // wheel position:
         wheel.transform.localPosition = new Vector3(x1,y,0f);
 

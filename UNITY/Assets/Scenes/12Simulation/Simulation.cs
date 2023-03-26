@@ -9,6 +9,8 @@ public class Simulation : MonoBehaviour
     // ========================================================================================================
     private int genNum;
     private int numOfCreatures = 100;
+    private int numOfMutations = 0;
+    private Color generationColor;
 
     private Creature[] creatureArray = new Creature[100];// create an array of type creature and length creatureNum
 
@@ -37,22 +39,33 @@ public class Simulation : MonoBehaviour
     void Start()
     { 
         dontDestroyScript = GameObject.Find("DontDestroy").GetComponent<DontDestroy>();
-        //if (dontDestroyScript.genNum == 0){
-    
-            // Generation 0
+        generationColor = Random.ColorHSV();// randomly generate a generaiton color. This will be passed to the creatures
+        // each geneartion has a color so its easily distinguible which creatures are from a previous or new generation
+
+
+        if (dontDestroyScript.getGenNum() == 0){
+            // GENERATION 0
             for(int i = 0; i < numOfCreatures; i++){
                 creatureArray[i] = new Creature();
-                creatureArray[i].CreatureNoParent(i);// also pass a creature number i using this constructor
+                creatureArray[i].CreatureNoParent(i, generationColor);
+            }
         }
-        //}
-        /*else{
+        else{
             // NOT GENERATION 0
             for(int i = 0; i < numOfCreatures; i++){
-                genNum = dontDestroyScript.genNum;
+                if (Random.Range(0,100) <= 80){// 80% THE CREATURE WON'T BE A MUTATION
+                genNum = dontDestroyScript.getGenNum();
                 creatureArray[i] = new Creature();
-                creatureArray[i].CreatureWithParent(i,dontDestroyScript.cr1, dontDestroyScript.cr2);// also pass a creature number i using this constructor
+                creatureArray[i].CreatureWithParent(i ,dontDestroyScript.getGenColor(), dontDestroyScript.getCr1(), dontDestroyScript.getCr2());// also pass a creature number i using this constructor
+                } else{ // MUTATION
+                    creatureArray[i] = new Creature();
+                    creatureArray[i].CreatureNoParent(i,generationColor);
+                    numOfMutations++;
+                }
+            }
+            Debug.Log("Generation: "+genNum + ". Number of mutations in this generation: " +numOfMutations);
         }
-        }*/
+
         
         setCamera(creatureArray[0]);
         // TEMPorarailly set the new target as the first creature in the array, for testing purposes
@@ -73,14 +86,14 @@ public class Simulation : MonoBehaviour
 
         // time measurer
         timeElapsed = timeScript.getTime();
-        if (timeElapsed >= 10){
-            sceneRestartScript.RestartScene(genNum + 1, bestCreature, secondBestCreature);
+        if (timeElapsed >= 5){
+            sceneRestartScript.RestartScene(genNum + 1, bestCreature, secondBestCreature, bestCreature.getGenColor());
         }
 
         bestCreature = getBestCreature();
-        Debug.Log("Best creature at time " + timeElapsed + ", CREATURE NUM : " + bestCreature.getCreatureNum() + " has travelled " + bestCreature.getCreatureDistance());
+        //Debug.Log("Best creature at time " + timeElapsed + ", CREATURE NUM : " + bestCreature.getCreatureNum() + " has travelled " + bestCreature.getCreatureDistance());
         secondBestCreature = getSecondBestCreature();
-        Debug.Log("SECOND best creature at time " + timeElapsed + ", CREATURE NUM : " + secondBestCreature.getCreatureNum() + " has travelled " + secondBestCreature.getCreatureDistance());
+        //Debug.Log("SECOND best creature at time " + timeElapsed + ", CREATURE NUM : " + secondBestCreature.getCreatureNum() + " has travelled " + secondBestCreature.getCreatureDistance());
         
         setCamera(bestCreature);
         
@@ -115,14 +128,14 @@ public class Simulation : MonoBehaviour
                 currentSecondBestCreature = currentCreature;
             }
         }
-        Debug.Log("SECOND best creature is creature number: " + currentSecondBestCreature.getCreatureNum());
+        //Debug.Log("SECOND best creature is creature number: " + currentSecondBestCreature.getCreatureNum());
         return (currentSecondBestCreature);
     }
 
     void setCamera(Creature targetCreature){
         newTarget = targetCreature.getCreatureBody().transform;
         cameraFollowScript.setTarget(newTarget);
-        Debug.Log("Following creature: " + targetCreature.getCreatureNum());
+        //Debug.Log("Following creature: " + targetCreature.getCreatureNum());
     }
 
     
